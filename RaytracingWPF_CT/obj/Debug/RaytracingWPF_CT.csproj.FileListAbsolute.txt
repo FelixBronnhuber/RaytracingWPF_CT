@@ -1,0 +1,16 @@
+C:\Users\felix\RiderProjects\RaytracingWPF_CT\RaytracingWPF_CT\bin\Debug\RaytracingWPF_CT.exe.config
+C:\Users\felix\RiderProjects\RaytracingWPF_CT\RaytracingWPF_CT\bin\Debug\RaytracingWPF_CT.exe
+C:\Users\felix\RiderProjects\RaytracingWPF_CT\RaytracingWPF_CT\bin\Debug\RaytracingWPF_CT.pdb
+C:\Users\felix\RiderProjects\RaytracingWPF_CT\RaytracingWPF_CT\obj\Debug\RaytracingWPF_CT.csprojAssemblyReference.cache
+C:\Users\felix\RiderProjects\RaytracingWPF_CT\RaytracingWPF_CT\obj\Debug\MainWindow.g.cs
+C:\Users\felix\RiderProjects\RaytracingWPF_CT\RaytracingWPF_CT\obj\Debug\App.g.cs
+C:\Users\felix\RiderProjects\RaytracingWPF_CT\RaytracingWPF_CT\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\felix\RiderProjects\RaytracingWPF_CT\RaytracingWPF_CT\obj\Debug\RaytracingWPF_CT_MarkupCompile.cache
+C:\Users\felix\RiderProjects\RaytracingWPF_CT\RaytracingWPF_CT\obj\Debug\RaytracingWPF_CT_MarkupCompile.lref
+C:\Users\felix\RiderProjects\RaytracingWPF_CT\RaytracingWPF_CT\obj\Debug\MainWindow.baml
+C:\Users\felix\RiderProjects\RaytracingWPF_CT\RaytracingWPF_CT\obj\Debug\RaytracingWPF_CT.g.resources
+C:\Users\felix\RiderProjects\RaytracingWPF_CT\RaytracingWPF_CT\obj\Debug\RaytracingWPF_CT.Properties.Resources.resources
+C:\Users\felix\RiderProjects\RaytracingWPF_CT\RaytracingWPF_CT\obj\Debug\RaytracingWPF_CT.csproj.GenerateResource.cache
+C:\Users\felix\RiderProjects\RaytracingWPF_CT\RaytracingWPF_CT\obj\Debug\RaytracingWPF_CT.csproj.CoreCompileInputs.cache
+C:\Users\felix\RiderProjects\RaytracingWPF_CT\RaytracingWPF_CT\obj\Debug\RaytracingWPF_CT.exe
+C:\Users\felix\RiderProjects\RaytracingWPF_CT\RaytracingWPF_CT\obj\Debug\RaytracingWPF_CT.pdb
