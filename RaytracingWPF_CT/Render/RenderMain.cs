@@ -72,6 +72,7 @@ namespace RaytracingWPF_CT.Render
 
                 minDistance = distance;
 
+                //color = primitive.GetColor();
                 Vec3 normal = (primitive.Origin - collisionPoint).GetUnitVector();
                 color = new Color(
                     Convert.ToByte(0.5 * (normal.X3 + 1.0) * 255),

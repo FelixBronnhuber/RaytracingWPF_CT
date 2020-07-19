@@ -26,7 +26,7 @@ namespace RaytracingWPF_CT.Render
             }
             catch
             {
-                EPrint(1, input);
+                EPrint(0, input);
                 scene = new Scene(0, 0) {ParseCompleted = false};
                 return scene;
                 //throw new Exception("ParseException:\tCould not parse the scene Size.");
