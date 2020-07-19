@@ -7,27 +7,18 @@ namespace RaytracingWPF_CT.Render
     public class RenderMain
     {
         private readonly int _height;
-        private readonly byte[] _pixelData;
         private readonly IPrimitive[] _primitives;
         private readonly int _width;
 
         public RenderMain(MainViewModel mainViewModel, string input)
         {
-            try
-            {
-                Scene scene = Parser.Parse(input);
-
-                _width = scene.Width;
-                _height = scene.Height;
-                _primitives = scene.ConvertToArray();
-
-                _pixelData = RenderPixels();
-                mainViewModel.BitmapSource = BitmapManager.SaveToBmp(_width, _height, _pixelData);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
+            Scene scene = Parser.Parse(input);
+            if (!scene.ParseCompleted) return;
+            _width = scene.Width;
+            _height = scene.Height;
+            _primitives = scene.ConvertToArray();
+            byte[] pixelData = RenderPixels();
+            mainViewModel.BitmapSource = BitmapManager.SaveToBmp(_width, _height, pixelData);
         }
 
         private byte[] RenderPixels()
@@ -39,24 +30,20 @@ namespace RaytracingWPF_CT.Render
             Vec3 start = new Vec3(d, 0, 0);
 
             for (int x = 0; x < _width; x++)
+            for (int y = 0; y < _height; y++)
             {
-                for (int y = 0; y < _height; y++)
-                {
-                    Vec3 direction = new Vec3(
-                        -d,
-                        Convert.ToDouble(x) - Convert.ToDouble(width / 2),
-                        Convert.ToDouble(y) - Convert.ToDouble(height / 2)
-                    );
+                Vec3 direction = new Vec3(
+                    -d,
+                    Convert.ToDouble(x) - Convert.ToDouble(width / 2),
+                    Convert.ToDouble(y) - Convert.ToDouble(height / 2)
+                );
 
-                    Color color = GetColor(new Ray(start, direction));
+                Color color = GetColor(new Ray(start, direction));
 
-                    pixelData[(y * _width + x) * 4] = color.B;
-                    pixelData[(y * _width + x) * 4 + 1] = color.G;
-                    pixelData[(y * _width + x) * 4 + 2] = color.R;
-                    pixelData[(y * _width + x) * 4 + 3] = MaxValue;
-                }
-
-                Console.WriteLine(Convert.ToDouble(x) / width * 100);
+                pixelData[(y * _width + x) * 4] = color.B;
+                pixelData[(y * _width + x) * 4 + 1] = color.G;
+                pixelData[(y * _width + x) * 4 + 2] = color.R;
+                pixelData[(y * _width + x) * 4 + 3] = MaxValue;
             }
 
             return pixelData;

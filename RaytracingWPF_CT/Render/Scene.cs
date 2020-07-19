@@ -8,6 +8,7 @@ namespace RaytracingWPF_CT.Render
 
         public Scene(int width, int height)
         {
+            ParseCompleted = true;
             Width = width;
             Height = height;
             _objects = new List<IPrimitive>();
@@ -16,9 +17,16 @@ namespace RaytracingWPF_CT.Render
         public int Width { get; set; }
         public int Height { get; set; }
 
+        public bool ParseCompleted { get; set; }
+
         public void AddPrimitive(IPrimitive primitive)
         {
             _objects.Add(primitive);
+        }
+
+        public void ClearPrimitives()
+        {
+            _objects.Clear();
         }
 
         public IPrimitive[] ConvertToArray()

@@ -27,7 +27,9 @@ namespace RaytracingWPF_CT.Render
             catch
             {
                 EPrint(1, input);
-                throw new Exception("ParseException:\tCould not parse the scene Size.");
+                scene = new Scene(0, 0) {ParseCompleted = false};
+                return scene;
+                //throw new Exception("ParseException:\tCould not parse the scene Size.");
             }
 
             int i = 0;
@@ -48,7 +50,9 @@ namespace RaytracingWPF_CT.Render
             catch
             {
                 EPrint(i, input);
-                throw new Exception("ParseException:\tCould not parse all the Primitives.");
+                scene.ClearPrimitives();
+                scene.ParseCompleted = false;
+                //throw new Exception("ParseException:\tCould not parse all the Primitives.");
             }
 
             return scene;
