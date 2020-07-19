@@ -4,7 +4,7 @@ namespace RaytracingWPF_CT.Render
 {
     public class Vec3
     {
-        private const double Tolerance = 0.00001;
+        private const double Tolerance = 0.000001;
 
         public Vec3(double x1, double x2, double x3)
         {
@@ -74,8 +74,8 @@ namespace RaytracingWPF_CT.Render
 
         public static bool operator !=(Vec3 a, Vec3 b)
         {
-            if (a is null && b is null) return true;
-            if (a is null || b is null) return false;
+            if (a is null && b is null) return false;
+            if (a is null || b is null) return true;
             return Math.Abs(a.X1 - b.X1) > Tolerance || Math.Abs(a.X2 - b.X2) > Tolerance ||
                    Math.Abs(a.X3 - b.X3) > Tolerance;
         }

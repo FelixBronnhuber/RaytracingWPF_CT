@@ -23,6 +23,7 @@ namespace RaytracingWPF_CT.Render
 
         private byte[] RenderPixels()
         {
+            Console.WriteLine(_primitives.Length);
             byte[] pixelData = new byte[_width * _height * 4];
             double width = Convert.ToDouble(_width);
             double height = Convert.ToDouble(_height);
@@ -59,6 +60,8 @@ namespace RaytracingWPF_CT.Render
                 Convert.ToByte(255 * (1.0 - t + t * 1.0))
             );
 
+            Vec3 actualHitpoint = null;
+            Vec3 normal = null;
             foreach (IPrimitive primitive in _primitives)
             {
                 Vec3 collisionPoint = primitive.CollisionPoint(ray);
@@ -71,14 +74,32 @@ namespace RaytracingWPF_CT.Render
                 if (!(distance < minDistance)) continue;
 
                 minDistance = distance;
+                actualHitpoint = collisionPoint;
 
                 //color = primitive.GetColor();
-                Vec3 normal = (primitive.Origin - collisionPoint).GetUnitVector();
+                normal = (primitive.Origin - collisionPoint).GetUnitVector();
                 color = new Color(
                     Convert.ToByte(0.5 * (normal.X3 + 1.0) * 255),
                     Convert.ToByte(0.5 * (normal.X2 + 1.0) * 255),
                     Convert.ToByte(0.5 * (normal.X1 + 1.0) * 255)
                 );
+            }
+            
+            //Shadow- or Light-Raycast:
+
+            if (actualHitpoint == null) return color;
+            
+            Vec3 lightSource = new Vec3(1000, 1000, 0);
+            Ray lightRay = new Ray(actualHitpoint, normal);
+
+            foreach (IPrimitive primitive in _primitives)
+            {
+                Vec3 point = primitive.CollisionPoint(lightRay);
+                if (point != null && (point != actualHitpoint))
+                {
+                    Vec3 c = new Vec3(color.R, color.G, color.B) * 0.5;
+                    return new Color((byte) c.X1, (byte) c.X2, (byte) c.X3);
+                }
             }
 
             return color;
