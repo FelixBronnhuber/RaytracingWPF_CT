@@ -91,9 +91,9 @@ namespace RaytracingWPF_CT.Render
             for (int i = 0; i < lines.Length; i++)
             {
                 if (line == i) Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(" [{0}]:\t{1}", i + 1, lines[i]);
+                Console.WriteLine(@" [{0}]:	{1}", i + 1, lines[i]);
                 if (line != i) continue;
-                Console.WriteLine(" ...");
+                Console.WriteLine(@" ...");
                 break;
             }
 

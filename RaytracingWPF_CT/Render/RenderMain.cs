@@ -37,23 +37,26 @@ namespace RaytracingWPF_CT.Render
             double height = Convert.ToDouble(_height);
             double d = -(Convert.ToDouble(_width) / 2 / Math.Tan(Math.PI / 4));
             Vec3 start = new Vec3(d, 0, 0);
-            Console.WriteLine(start.ToString());
 
             for (int x = 0; x < _width; x++)
-            for (int y = 0; y < _height; y++)
             {
-                Vec3 direction = new Vec3(
-                    -d,
-                    Convert.ToDouble(x) - Convert.ToDouble(width / 2),
-                    Convert.ToDouble(y) - Convert.ToDouble(height / 2)
-                );
+                for (int y = 0; y < _height; y++)
+                {
+                    Vec3 direction = new Vec3(
+                        -d,
+                        Convert.ToDouble(x) - Convert.ToDouble(width / 2),
+                        Convert.ToDouble(y) - Convert.ToDouble(height / 2)
+                    );
 
-                Color color = GetColor(new Ray(start, direction));
+                    Color color = GetColor(new Ray(start, direction));
 
-                pixelData[(y * _width + x) * 4] = color.B;
-                pixelData[(y * _width + x) * 4 + 1] = color.G;
-                pixelData[(y * _width + x) * 4 + 2] = color.R;
-                pixelData[(y * _width + x) * 4 + 3] = MaxValue;
+                    pixelData[(y * _width + x) * 4] = color.B;
+                    pixelData[(y * _width + x) * 4 + 1] = color.G;
+                    pixelData[(y * _width + x) * 4 + 2] = color.R;
+                    pixelData[(y * _width + x) * 4 + 3] = MaxValue;
+                }
+
+                Console.WriteLine(Convert.ToDouble(x) / width * 100);
             }
 
             return pixelData;
@@ -82,8 +85,7 @@ namespace RaytracingWPF_CT.Render
 
                 minDistance = distance;
 
-                Vec3 normal = ((collisionPoint - primitive.Origin) * -1).GetUnitVector();
-
+                Vec3 normal = (primitive.Origin - collisionPoint).GetUnitVector();
                 color = new Color(
                     Convert.ToByte(0.5 * (normal.X3 + 1.0) * 255),
                     Convert.ToByte(0.5 * (normal.X2 + 1.0) * 255),
